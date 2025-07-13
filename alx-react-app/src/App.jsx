@@ -2,7 +2,10 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import WelcomeMessage from './components/WelcomeMessage'  // <-- Import the new component
+import WelcomeMessage from './components/WelcomeMessage'
+import Header from './components/Header'
+import MainContent from './components/MainContent'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,8 +21,12 @@ function App() {
         </a>
       </div>
 
-      {/* Insert the WelcomeMessage component here */}
       <WelcomeMessage />
+
+      {/* New Components for Favorite Cities */}
+      <Header />
+      <MainContent />
+      <Footer />
 
       <h1>Vite + React</h1>
       <div className="card">
