@@ -6,6 +6,8 @@ import WelcomeMessage from './components/WelcomeMessage'
 import Header from './components/Header'
 import MainContent from './components/MainContent'
 import Footer from './components/Footer'
+import UserProfile from './components/UserProfile'
+import Button from './components/Button'   // <-- New import
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,10 +25,18 @@ function App() {
 
       <WelcomeMessage />
 
-      {/* New Components for Favorite Cities */}
       <Header />
       <MainContent />
       <Footer />
+
+      <UserProfile 
+        name="Alice" 
+        age="25" 
+        bio="Loves hiking and photography" 
+      />
+
+      {/* Reusable Button Component */}
+      <Button label="Click Me!" onClick={() => alert('Button clicked!')} />
 
       <h1>Vite + React</h1>
       <div className="card">
