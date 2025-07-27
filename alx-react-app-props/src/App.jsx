@@ -5,8 +5,8 @@ import ProfilePage from './ProfilePage';
 
 function App() {
   const user = {
-    name: 'Ishmael Mavundla',
-    email: 'ishmael@example.com'
+    name: 'Jane Doe',
+    email: 'jane.doe@example.com'
   };
 
   return (
