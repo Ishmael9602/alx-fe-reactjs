@@ -9,16 +9,25 @@ const navLinks = [
 
 function Navbar() {
   return (
-    <nav style={{ backgroundColor: '#444', padding: '10px' }}>
-      {navLinks.map(({ path, label }) => (
-        <Link 
-          key={path} 
-          to={path} 
-          style={{ color: 'white', marginRight: '20px', textDecoration: 'none' }}
-        >
-          {label}
-        </Link>
-      ))}
+    <nav
+      style={{
+        backgroundColor: '#444',
+        padding: '10px',
+        display: 'flex',
+        justifyContent: 'space-between'
+      }}
+    >
+      <div style={{ display: 'flex' }}>
+        {navLinks.map(({ path, label }) => (
+          <Link 
+            key={path} 
+            to={path} 
+            style={{ color: 'white', marginRight: '20px', textDecoration: 'none' }}
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
     </nav>
   );
 }
