@@ -1,15 +1,26 @@
 import React from 'react';
+import { useRecipeStore } from '../store/recipeStore';
 
-function RecipeDetail({ recipe }) {
-  if (!recipe) return <div>Select a recipe to see details</div>;
+const FavoriteToggleButton = ({ recipeId }) => {
+  const favorites = useRecipeStore(state => state.favorites);
+  const addFavorite = useRecipeStore(state => state.addFavorite);
+  const removeFavorite = useRecipeStore(state => state.removeFavorite);
+
+  const isFavorited = favorites.includes(recipeId);
+
+  const toggleFavorite = () => {
+    if (isFavorited) {
+      removeFavorite(recipeId);
+    } else {
+      addFavorite(recipeId);
+    }
+  };
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '20px' }}>
-      <h2>{recipe.name}</h2>
-      <p><strong>Ingredients:</strong> {recipe.ingredients}</p>
-      <p><strong>Instructions:</strong> {recipe.instructions}</p>
-    </div>
+    <button onClick={toggleFavorite}>
+      {isFavorited ? 'Remove from Favorites' : 'Add to Favorites'}
+    </button>
   );
-}
+};
 
-export default RecipeDetail;
+export default FavoriteToggleButton;
