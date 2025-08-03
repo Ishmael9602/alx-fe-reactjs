@@ -1,24 +1,31 @@
-import create from 'zustand';
+import { create } from "zustand";
 
-const useRecipeStore = create(set => ({
+const useRecipeStore = create((set) => ({
   recipes: [],
-
   favorites: [],
-  addFavorite: (recipeId) => set(state => ({
-    favorites: state.favorites.includes(recipeId) ? state.favorites : [...state.favorites, recipeId]
-  })),
-  removeFavorite: (recipeId) => set(state => ({
-    favorites: state.favorites.filter(id => id !== recipeId)
-  })),
+  searchTerm: "", // required for search feature
+  setSearchTerm: (term) => set({ searchTerm: term }), // updates search term
 
-  recommendations: [],
-  generateRecommendations: () => set(state => {
-    // Simple mock: pick recipes NOT favorited randomly as recommendations
-    const recommended = state.recipes.filter(recipe =>
-      !state.favorites.includes(recipe.id) && Math.random() > 0.5
-    );
-    return { recommendations: recommended };
-  }),
+  addRecipe: (recipe) =>
+    set((state) => ({
+      recipes: [...state.recipes, recipe],
+    })),
+
+  removeRecipe: (id) =>
+    set((state) => ({
+      recipes: state.recipes.filter((recipe) => recipe.id !== id),
+    })),
+
+  addFavorite: (recipe) =>
+    set((state) => ({
+      favorites: [...state.favorites, recipe],
+    })),
+
+  removeFavorite: (id) =>
+    set((state) => ({
+      favorites: state.favorites.filter((recipe) => recipe.id !== id),
+    })),
 }));
 
 export default useRecipeStore;
+
