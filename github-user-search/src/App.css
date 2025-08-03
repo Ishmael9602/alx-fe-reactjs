@@ -1,8 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can still keep some custom styles if needed */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+ @apply max-w-[64rem] mx-auto p-6 text-center;
+}
+
+.card {
+  @apply p-6 bg-white shadow rounded-lg;
 }
 
 .logo {
@@ -33,10 +39,6 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
 .read-the-docs {
-  color: #888;
+  @apply text-gray-500;
 }
