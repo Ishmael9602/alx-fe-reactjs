@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchAdvancedSearch } from "../services/githubService";
+import { fetchUserData } from "../services/githubService";
 
 export default function Search() {
   const [username, setUsername] = useState("");
@@ -14,7 +14,7 @@ export default function Search() {
     setLoading(true);
     setError("");
     try {
-      const data = await fetchAdvancedSearch(username, location, minRepos);
+      const data = await fetchUserData(username, location, minRepos);
       setResults(data.items || []);
     } catch {
       setError("Looks like we can't find the user");
@@ -24,7 +24,7 @@ export default function Search() {
   };
 
   return (
-    <div className="max-w-[64rem] mx-auto">
+    <div className="max-w-[64rem] mx-auto p-4">
       <form
         onSubmit={handleSearch}
         className="bg-white shadow p-4 rounded-lg flex flex-col gap-4"
@@ -49,6 +49,7 @@ export default function Search() {
           value={minRepos}
           onChange={(e) => setMinRepos(e.target.value)}
           className="border p-2 rounded"
+          min="0"
         />
         <button
           type="submit"
@@ -63,10 +64,7 @@ export default function Search() {
 
       <div className="mt-4">
         {results.map((user) => (
-          <div
-            key={user.id}
-            className="flex items-center gap-4 border-b py-2"
-          >
+          <div key={user.id} className="flex items-center gap-4 border-b py-2">
             <img
               src={user.avatar_url}
               alt={user.login}
