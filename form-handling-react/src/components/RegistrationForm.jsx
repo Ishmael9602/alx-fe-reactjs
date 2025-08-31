@@ -4,13 +4,21 @@ function RegistrationForm() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!username || !email || !password) {
-      alert('Please fill all fields');
+    const newErrors = {};
+    if (!username) newErrors.username = 'Username is required';
+    if (!email) newErrors.email = 'Email is required';
+    if (!password) newErrors.password = 'Password is required';
+    
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
+
+    setErrors({});
     alert(`Registered: ${username}, ${email}`);
   };
 
@@ -25,6 +33,7 @@ function RegistrationForm() {
           onChange={(e) => setUsername(e.target.value)}
           className="w-full p-2 border rounded"
         />
+        {errors.username && <div className="text-red-500 text-sm mt-1">{errors.username}</div>}
       </div>
       <div className="mb-4">
         <label className="block mb-1">Email</label>
@@ -34,6 +43,7 @@ function RegistrationForm() {
           onChange={(e) => setEmail(e.target.value)}
           className="w-full p-2 border rounded"
         />
+        {errors.email && <div className="text-red-500 text-sm mt-1">{errors.email}</div>}
       </div>
       <div className="mb-4">
         <label className="block mb-1">Password</label>
@@ -43,6 +53,7 @@ function RegistrationForm() {
           onChange={(e) => setPassword(e.target.value)}
           className="w-full p-2 border rounded"
         />
+        {errors.password && <div className="text-red-500 text-sm mt-1">{errors.password}</div>}
       </div>
       <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
         Register
