@@ -1,15 +1,18 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import RecipeDetail from './components/RecipeDetail';
+import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import PostsComponent from './components/PostsComponent';
+import './index.css';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/recipe/:id" element={<RecipeDetail />} />
-      </Routes>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <div className="container mx-auto mt-8">
+        <h1 className="text-2xl font-bold mb-4">React Query Demo</h1>
+        <PostsComponent />
+      </div>
+    </QueryClientProvider>
   );
 }
 
