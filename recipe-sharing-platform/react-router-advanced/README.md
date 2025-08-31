@@ -1,12 +1,22 @@
-# React + Vite
+# React Query Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Objective
+Demonstrate advanced data handling in React using React Query to fetch, cache, and update data from the JSONPlaceholder API.
 
-Currently, two official plugins are available:
+## Setup
+1. Install dependencies:
+   npm install
+2. Run the development server:
+   npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Fetch posts from JSONPlaceholder API
+- Loading and error handling
+- Caching data with React Query
+- Manual refetching of data
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies
+- React 18
+- React Query
+- Vite
+- Tailwind CSS
